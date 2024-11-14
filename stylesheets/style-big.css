@@ -1,0 +1,40 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+}
+
+.settings {
+    flex-flow: row wrap;
+    justify-content: center;
+
+    margin: 0 25px;
+}
+
+.block {
+    /* min-width: 350px; */
+
+    border-radius: 20px;
+}
+
+.results {
+    align-items: center;
+}
+
+.results .block {
+    max-width: 70%;
+}
+
+.map_canvas {
+    /* min-width: 350px;
+    min-height: 350px;
+    box-sizing: border-box; */
+}
+
+.clear_dialog {
+    margin: auto;
+    max-width: 600px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk_UA">
+    <head>
+        <title>Нівелятор</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+        <script type="text/javascript" src="scripts/utility.js"></script>
+        <script type="text/javascript" src="scripts/lut.js"></script>
+        <script type="text/javascript" src="scripts/compute.js"></script>
+        <script type="text/javascript" src="scripts/renderers.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
+        <script type="text/javascript">
+            const app = new App();
+            window.onload = (event) => app.start();
+        </script>
+
+        <link rel="stylesheet" href="stylesheets/reset.css" />
+        <link rel="stylesheet" href="stylesheets/baseline.css" />
+
+        <link rel="stylesheet" href="stylesheets/style.css" />
+        <link rel="stylesheet" href="stylesheets/style-big.css" media="screen and (min-width: 600px)" />
+        <link rel="stylesheet" href="stylesheets/style-small.css" media="screen and (max-width: 600px)" />
+    </head>
+    <body>
+        <!-- <header>
+            <h1>Нівелятор</h1>
+        </header> -->
+        <main>
+            <section class="settings">
+                <!-- <header>
+                    <h2>Settings</h2>
+                </header> -->
+                <div class="block">
+                    <header><h4>Керування</h4></header>
+                    <hr />
+                    <label>
+                        <div class="label-text">Зафіксувати розмір:</div>
+                        <input id="lock_expansion_toggle" type="checkbox" checked />
+                    </label>
+                    <hr />
+                    <div class="data_input_panel" id="data_input_panel">
+                        <input type="number" value="150" min="0" step="0.01" corner="top_left" />
+                        <button class="offset_control" direction="up">↑</button>
+                        <input type="number" value="150" min="0" step="0.01" corner="top_right" />
+                        <button class="offset_control" direction="left">←</button>
+                        <canvas id="grid_overview_canvas" width="100" height="100">No canvas support</canvas>
+                        <button class="offset_control" direction="right">→</button>
+                        <input type="number" value="150" min="0" step="0.01" corner="bottom_left" />
+                        <button class="offset_control" direction="down">↓</button>
+                        <input type="number" value="150" min="0" step="0.01" corner="bottom_right" />
+                    </div>
+                    <hr />
+                    <button id="clear_grid">Очистити</button>
+                    <hr />
+                    <!-- <button id="clear_grid">Очистити</button> -->
+                    <p class="note">Висота у метрах</p>
+                </div>
+                <div class="block">
+                    <header><h4>Налаштування</h4></header>
+                    <hr />
+
+                    <!-- <label>
+                        <div class="label-text">Розмір</div>
+                        <input type="number" value="150" min="0" step="0.01" corner="top-left" />
+                    </label> -->
+
+                    <label>
+                        <div class="label-text">
+                            Маштаб
+                            <p class="note">(мм)</p>
+                            :
+                        </div>
+                        <input id="dist_scale" type="number" value="20" min="0" step="0.1" />
+                    </label>
+
+                    <p class="note">Маштаб позначає відстань між точками на рисунку</p>
+
+                    <label>
+                        <div class="label-text">
+                            Крок
+                            <p class="note">(м)</p>
+                            :
+                        </div>
+                        <input id="step" type="number" value="0.5" min="0" step="0.1" />
+                    </label>
+
+                    <label>
+                        <div class="label-text">Показувати висоту точок:</div>
+                        <input id="show_height" type="checkbox" checked />
+                    </label>
+
+                    <label>
+                        <div class="label-text">Показувати довжини для рисунку:</div>
+                        <input id="show_length" type="checkbox" checked />
+                    </label>
+
+                    <label>
+                        <div class="label-text">Показувати лінії нівелювання:</div>
+                        <input id="show_height_lines" type="checkbox" />
+                    </label>
+
+                    <label class="tabbed">
+                        <div class="label-text">Підписувати висоту:</div>
+                        <input id="show_height_lines_labels" type="checkbox" />
+                    </label>
+
+                    <label>
+                        <div class="label-text">Показувати повну мапу:</div>
+                        <input id="show_as_a_map" type="checkbox" />
+                    </label>
+                </div>
+            </section>
+            <section class="results" id="result_section">
+                <div class="block">
+                    <header><h4>Результат</h4></header>
+                    <hr />
+                    <canvas id="map_canvas" class="map_canvas" width="100" height="100">No canvas support</canvas>
+                </div>
+                <!-- <div class="block">
+                    <header><h4>Повна карта</h4></header>
+                    <hr />
+                    <canvas id="map_canvas" class="canvas" width="500" height="300">No canvas support</canvas>
+                </div> -->
+                <!-- <div class="block">
+                    <button onclick="app.renderer.render();">Refresh</button>
+                </div> -->
+            </section>
+        </main>
+
+        <dialog id="clear_dialog" class="clear_dialog">
+            <h1>Очистити?</h1>
+            <section>
+                <p>Ця дія незворотна!</p>
+                <div class="actions">
+                    <button id="clear_dialog_cancel" autofocus>Скасувати</button>
+                    <button id="clear_dialog_confirm" class="danger">Очистити</button>
+                </div>
+            </section>
+        </dialog>
+        <!-- <footer></footer> -->
+    </body>
+</html>
